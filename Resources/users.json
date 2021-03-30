@@ -1,0 +1,52 @@
+[
+	{
+		"username" : "rockstar80s",
+		"name" : "Bill Wolner",
+		"profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		"email" : "bill.wol@yahoo.com",
+		"type" : "standard",
+		"state" : "Arkansas",
+		"city" : "Alpena",
+		"bio" : "hi"
+	},
+	{
+		"username" : "bird-watcher",
+		"name" : "Stan Evans",
+		"profileImage" : "https://i.imgur.com/f1czV9q.png",
+		"email" : "s.evans64@yahoo.com",
+		"type" : "standard",
+		"state" : "Virginia",
+		"city" : "Newport",
+		"bio" : "Please rate my flips! I want to go pro!"
+	},
+	{
+		"username" : "c_oaks",
+		"name" : "Senna Reeves",
+		"profileImage" : "https://i.imgur.com/JZvOcob.png",
+		"email" : "reeves4010@yahoo.com",
+		"type" : "standard",
+		"state" : "California",
+		"city" : "Los Angeles",
+		"bio" : "Representing the West Coast"
+	},
+	{
+		"username" : "smoochTimes",
+		"name" : "Big Smooch",
+		"profileImage" : "https://i.imgur.com/DNofKeR.png",
+		"email" : "gibblers.gooblers@yahoo.com",
+		"type" : "admin",
+		"state" : "Hell",
+		"city" : "Michigan",
+		"bio" : "<3 xoxo <3"
+	},
+	{
+		"username" : "poop_butt_jr",
+		"name" : "Nathan Rice",
+		"profileImage" : "https://i.imgur.com/eLWA4TT.jpeg",
+		"email" : "n.soul.rice@yahoo.com",
+		"type" : "standard",
+		"state" : "Raleigh",
+		"city" : "North Carolina",
+		"bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\""
+	}
+]

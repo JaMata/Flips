@@ -1,0 +1,130 @@
+[
+	{
+		"image" : "https://i.imgur.com/Jql2Hkp.gif",
+		"trick" : "Kickflip",
+		"imageDescription" : "I'm a mad-lad!",
+		"latitude" : 42.434735,
+		"longitude" : -83.9937762
+	},
+	{
+		"image" : "https://i.imgur.com/Vmmr0zs.gif",
+		"trick" : "Heelflip",
+		"imageDescription" : "I'm still a mad-lad!",
+		"latitude" : 43.4435854,
+		"longitude" : -112.81277
+	},
+	{
+		"image" : "https://i.imgur.com/JEskXfB.gif",
+		"trick" : "Frontside flip",
+		"imageDescription" : "Took a lot of hits, but I got it",
+		"latitude" : 35.772162,
+		"longitude" : -88.8764861
+	},
+	{
+		"image" : "https://i.imgur.com/HWYYMDF.gif",
+		"trick" : "Backside flip",
+		"imageDescription" : "I'll let the flip speak for itself",
+		"latitude" : 42.434735,
+		"longitude" : -83.9937762
+	},
+	{
+		"image" : "https://i.imgur.com/CcV2L9a.gif",
+		"trick" : "Kickflip",
+		"imageDescription" : ""
+	},
+	{
+		"image" : "https://i.imgur.com/lJjqdyh.gif",
+		"trick" : "Kickflip",
+		"imageDescription" : ""
+	},
+	{
+		"image" : "https://i.imgur.com/rbrCF0d.gif",
+		"trick" : "Kickflip",
+		"imageDescription" : "I NEVER BACK DOWN!",
+		"latitude" : 43.4435854,
+		"longitude" : -112.81277
+	},
+	{
+		"image" : "https://i.imgur.com/ZYOxmBg.gif",
+		"trick" : "Ollie",
+		"imageDescription" : "No flip, but still nice!",
+		"latitude" : 42.434735,
+		"longitude" : -83.9937762
+	},
+	{
+		"image" : "https://i.imgur.com/4PjZ3wi.gif",
+		"trick" : "Ollie",
+		"imageDescription" : "My friend is crazy",
+		"latitude" : 35.5403004,
+		"longitude" : -79.7477886
+	},
+	{
+		"image" : "https://i.imgur.com/movkgfn.gif",
+		"trick" : "Ollie",
+		"imageDescription" : "c r a c k e d",
+		"latitude" : 33.1920804,
+		"longitude" : -107.3231996
+	},
+	{
+		"image" : "https://i.imgur.com/YiOcOXA.gif",
+		"trick" : "Hardflip",
+		"imageDescription" : "Hardest flip of my life",
+		"latitude" : 39.7999778,
+		"longitude" : -104.9140544
+	},
+	{
+		"image" : "https://i.imgur.com/76Rw1aq.gif",
+		"trick" : "Hardflip",
+		"imageDescription" : "security kicked me out right after",
+		"latitude" : 39.2336469,
+		"longitude" : -121.1563705
+	},
+	{
+		"image" : "https://i.imgur.com/v1zVp3I.gif",
+		"trick" : "Hardflip",
+		"imageDescription" : ""
+	},
+	{
+		"image" : "https://i.imgur.com/lD917YV.gif",
+		"trick" : "Hardflip",
+		"imageDescription" : ""
+	},
+	{
+		"image" : "https://i.imgur.com/FyaZRZ1.gif",
+		"trick" : "Tre flip",
+		"imageDescription" : "BOOM",
+		"latitude" : 40.5269138,
+		"longitude" : -89.0571699
+	},
+	{
+		"image" : "https://i.imgur.com/cQAISH9.gif",
+		"trick" : "Tre flip",
+		"imageDescription" : ""
+	},
+	{
+		"image" : "https://i.imgur.com/xKb1AZl.jpeg",
+		"trick" : "Tre flip",
+		"imageDescription" : "",
+		"latitude" : -16.13909,
+		"longitude" : 37.39809
+	},
+	{
+		"image" : "https://i.imgur.com/lfuUqF3.jpeg",
+		"trick" : "Tre flip",
+		"imageDescription" : "front foot catch. I wish I had these!",
+		"latitude" : -4.63499,
+		"longitude" : 136.21109
+	},
+	{
+		"image" : "https://i.imgur.com/mk1ak0k.gif,
+		"trick" : "Tre flip",
+		"imageDescription" : "360",
+		"latitude" : 65.22272,
+		"longitude" : 31.55010
+	},
+	{
+		"image" : "https://i.imgur.com/g1CcOOT.gif",
+		"trick" : "Backside flip",
+		"imageDescription" : "I could've gone for a full 360"
+	}
+]
