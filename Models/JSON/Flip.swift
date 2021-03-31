@@ -9,19 +9,19 @@ import Foundation
 
 struct Flip: Codable {
 	
-	let id: UUID
-	let timestamp: Date
+	public var id: UUID = UUID()
+	public var timestamp: Date = Date()
 	let image: String
 	let trick: Trick
 	let imageDescription: String
-	let latitude: Double
-	let longitude: Double
+	let latitude: Double?
+	let longitude: Double?
 	let author: User
 	let ratings: [Rating]
 	var score: Double {
 		guard ratings.count > 0 else {return 0 }
-		return ratings.reduce(0) { $0
-			+ $1.score }/Double(ratings.count)
+		return Double(ratings.reduce(0) { $0
+			+ Int($1.score) }/ratings.count)
 		}
 	
 	func convertToManagedObject() -> FlipEntity {
@@ -33,15 +33,15 @@ struct Flip: Codable {
 		flipEntity.image = URL(fileURLWithPath: self.image)
 		flipEntity.trick = self.trick.rawValue
 		flipEntity.imageDescription = self.imageDescription
-		flipEntity.latitude = self.latitude
-		flipEntity.longitude = self.longitude
+		flipEntity.latitude = self.latitude!
+		flipEntity.longitude = self.longitude!
 		flipEntity.author = FlipsCoreDataModel.getUserWith(uuid: self.author.id)
 		flipEntity.ratings = NSSet()
 		
 		// loop over flips, and add separately
 		for rating in self.ratings {
 			let ratingEntity = FlipsCoreDataModel.getRatingWith(uuid: rating.id)
-			ratingEntity.addToRatings(ratingEntity)
+			flipEntity.addToRatings(ratingEntity!)
 		}
 		
 		return flipEntity
@@ -61,7 +61,7 @@ struct Flip: Codable {
 		
 		for ratingEn in flipEntity.ratings!.allObjects as! [RatingEntity] {
 			
-			let rating = Rating(rating: ratingEn)
+			let rating = Rating(ratingEntity: ratingEn)
 			tempRatings.append(rating)
 		}
 		self.ratings = tempRatings

@@ -78,12 +78,12 @@ struct LoginScreen: View {
 					.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
 			))
 		} else {
-			// let dataModel = FlipsCoreDataModel()
+			let dataModel = FlipsCoreDataModel()
 			if networkDataLoaded == false {
-				return AnyView(LoadingView(networkDataLoaded: $networkDataLoaded)) // dataModel: dataModel,
+				return AnyView(LoadingView(model: dataModel, networkDataLoaded: $networkDataLoaded))
 			}
 			else {
-				return AnyView(ContentView()) // model: dataModel
+				return AnyView(ContentView(model: dataModel))
 			}
 		}
 	}

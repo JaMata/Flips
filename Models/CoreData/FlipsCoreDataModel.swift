@@ -16,7 +16,7 @@ struct FlipsCoreDataModel: FlipsModel {
 	var feedbacks: [Feedback] { return [] }
 
 	static var context = PersistenceController.shared.container.viewContext
-	let flipsTestData = FlipsModelTestData()
+	let flipsTestData = FlipsDataModelTestData()
 	
 	//Populating/Clearing methods
 	func emptyDB() {
@@ -49,10 +49,10 @@ struct FlipsCoreDataModel: FlipsModel {
 		
 		loadUserDatasetFromJSON()
 		loadFlipDatasetFromJSON()
-		loadRatingDatasetFromJSON()
 		loadFeedbackDatasetFromJSON()
 		
 		// link the objects to eachother ?
+		generateRatings(count: 30)
 	}
 	
 	func loadUserDatasetFromJSON() {
@@ -85,6 +85,7 @@ struct FlipsCoreDataModel: FlipsModel {
 		}
 	}
 	
+	/* Randomly generated
 	func loadRatingDatasetFromJSON() {
 		
 		guard let ratings = flipsTestData.ratings else {
@@ -99,10 +100,11 @@ struct FlipsCoreDataModel: FlipsModel {
 			print("Error saving rating to core data \(error)")
 		}
 	}
+	*/
 	
 	func loadFeedbackDatasetFromJSON() {
 		
-		guard let feedbacks = flipsTestData.schoolClasses else {
+		guard let feedbacks = flipsTestData.feedbacks else {
 			return print("Error loading feedbacks")
 		}
 		feedbacks.forEach({ feedback in _ = feedback.convertToManagedObject() })
@@ -156,7 +158,7 @@ struct FlipsCoreDataModel: FlipsModel {
 	}
 	
 	/// Returns a `FeedbackEntity` for a given `uuid`
-	static func getRatingWith(uuid: UUID) -> FeedbackEntity? {
+	static func getFeedbackWith(uuid: UUID) -> FeedbackEntity? {
 		let request = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "FeedbackById", substitutionVariables: ["id" : uuid])
 		
 		do {
@@ -185,57 +187,58 @@ struct FlipsCoreDataModel: FlipsModel {
 		}
 	}
 	
-	/// Makes an relationship between the user of `uuid`, the flip of `uuid`, and the rating of `uuid`
-	func assign(user uid: UUID, flip fid: UUID, rating rid: UUID) {
-		let userRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserById", substitutionVariables: ["id" : uid])
+	/// Generate a random Rating and assign it to a random flip and random user
+	/// Helps simulate the social aspect of Flips
+	func generateRatings(count: Int16) {
 		
-		let flipRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "FlipById", substitutionVariables: ["id" : fid])
+		print("Generate Ratings:")
 		
-		let ratingRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "RatingById", substitutionVariables: ["id" : rid])
-		do {
-			let user = try FlipsCoreDataModel.context.fetch(userRequest!).first as! UserEntity
-			let flip = try FlipsCoreDataModel.context.fetch(request!).first as! FlipEntity
+		for _ in 1...count {
 			
-			// adds this flip to the user's "flips" array
-			user.addToFlips(flip)
-			try FlipsCoreDataModel.context.save()
-		} catch {
-			print("Assignment of flip to user failed")
+			let userRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "UserEntity")
+			if let userCount = try? FlipsCoreDataModel.context.count(for: userRequest) {
+				userRequest.fetchOffset = Int.random(in: 0...userCount)
+				print("Users -> \(userCount)")
+			}
+			
+			let flipRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FlipEntity")
+			if let flipCount = try? FlipsCoreDataModel.context.count(for: flipRequest) {
+				flipRequest.fetchOffset = Int.random(in: 0...flipCount)
+				print("\nFlips -> \(flipCount)")
+			}
+			
+			userRequest.fetchLimit = 1
+			flipRequest.fetchLimit = 1
+			
+			var randomUsers: [UserEntity]?
+			var randomFlips: [FlipEntity]?
+			
+			FlipsCoreDataModel.context.performAndWait {
+				randomUsers = try? userRequest.execute() as? [UserEntity]
+				randomFlips = try? flipRequest.execute() as? [FlipEntity]
+			}
+			
+			do {
+				
+				let randomUserEntity = randomUsers!.first!
+				let randomFlipEntity = randomFlips!.first!
+				
+				let randomUser = User(userEntity: randomUserEntity)
+				let randomFlip = Flip(flipEntity: randomFlipEntity)
+				
+				let newRating = Rating(score: Int16.random(in: 0...3), user: randomUser, flip: randomFlip)
+				let newRatingEntity = newRating.convertToManagedObject()
+				
+				// adds this rating to the user's "ratings" array
+				randomUserEntity.addToRatings(newRatingEntity)
+				// adds this rating to the flip's "ratings" array
+				randomFlipEntity.addToRatings(newRatingEntity)
+				
+				try FlipsCoreDataModel.context.save()
+			} catch {
+				print("Assignment of rating to user and flip failed")
+			}
+			
 		}
-	}
-	
-	func assign(student jhed: String, toCourseClass courseClassName: String)
-	{
-		let studentRequest: NSFetchRequest<StudentEntity> = StudentEntity.fetchRequest()
-		studentRequest.predicate = NSPredicate(format: "jhed == %@", jhed)
-		
-		let courseClassRequest: NSFetchRequest<CourseClassEntity> = CourseClassEntity.fetchRequest()
-		courseClassRequest.predicate = NSPredicate(format: "courseClassName == %@", courseClassName)
-		do {
-			let student = try FlipsCoreDataModel.context.fetch(studentRequest).first!
-			let courseClass = try FlipsCoreDataModel.context.fetch(courseClassRequest).first!
-			student.addToClasses(courseClass)
-			try FlipsCoreDataModel.context.save()
-		} catch {
-			print("Assignment of student to class failed")
-		}
-		
-	}
-	
-	func assign(assignmentGrade: AssignmentGrade, toStudent jhed: String)
-	{
-		let studentRequest: NSFetchRequest<StudentEntity> = StudentEntity.fetchRequest()
-		studentRequest.predicate = NSPredicate(format: "jhed == %@", jhed)
-		
-		let assignmentGradeEntity = assignmentGrade.convertToManagedObject()
-		
-		do {
-			let student = try FlipsCoreDataModel.context.fetch(studentRequest).first!
-			student.addToAssignmentGrades(assignmentGradeEntity)
-			try FlipsCoreDataModel.context.save()
-		} catch {
-			print("Assignment of assignment to student failed")
-		}
-		
 	}
 }

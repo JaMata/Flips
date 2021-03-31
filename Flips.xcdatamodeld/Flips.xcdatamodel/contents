@@ -37,6 +37,10 @@
         <relationship name="flips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FlipEntity" inverseName="author" inverseEntity="FlipEntity"/>
         <relationship name="ratings" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="RatingEntity" inverseName="user" inverseEntity="RatingEntity"/>
     </entity>
+    <fetchRequest name="FeedbackById" entity="FeedbackEntity" predicateString="id == $id"/>
+    <fetchRequest name="FlipById" entity="FlipEntity" predicateString="id == $id"/>
+    <fetchRequest name="RatingById" entity="RatingEntity" predicateString="id == $id"/>
+    <fetchRequest name="UserById" entity="UserEntity" predicateString="id == $id"/>
     <elements>
         <element name="FlipEntity" positionX="-63" positionY="54" width="128" height="164"/>
         <element name="RatingEntity" positionX="-45" positionY="81" width="128" height="104"/>

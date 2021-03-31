@@ -9,72 +9,79 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
-    var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
+	
+	@State private var selection = 1
+	@State var model: FlipsModel
+	
+	var body: some View {
+		CoreDataView(selection: selection, model: $model)
+	}
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+struct CoreDataView: View {
+	
+	@State var selection = 1
+	@Binding var model: FlipsModel
+	@Environment(\.managedObjectContext) var context
+	
+	@FetchRequest(
+		entity: UserEntity.entity(),
+		sortDescriptors: [
+			NSSortDescriptor(keyPath: \UserEntity.id, ascending: true),
+	]) var users: FetchedResults<UserEntity>
+
+	@FetchRequest(
+		entity: FlipEntity.entity(),
+		sortDescriptors: [
+			NSSortDescriptor(keyPath: \FlipEntity.id, ascending: true),
+	]) var flips: FetchedResults<FlipEntity>
+
+	@FetchRequest(
+		entity: RatingEntity.entity(),
+		sortDescriptors: [
+			NSSortDescriptor(keyPath: \RatingEntity.id, ascending: true),
+	]) var ratings: FetchedResults<RatingEntity>
+	
+	@FetchRequest(entity: FeedbackEntity.entity(),
+								sortDescriptors: [NSSortDescriptor(keyPath: \FeedbackEntity.id, ascending: true),
+	]) var feedbacks: FetchedResults<FeedbackEntity>
+	
+	init(selection: Int, model: Binding<FlipsModel>) {
+		
+		_model = model
+		self.selection = selection
+		
+	}
+	
+	var body: some View {
+			TabView(selection: $selection) {
+				HomeView()
+					.tabItem { Image(systemName: "home") }
+					.tag(1)
+					.preferredColorScheme(.dark)
+				FlipsView(flips: flips.map{ Flip(flipEntity: $0) })
+					.tabItem { Image(systemName: "bandage") }
+					.tag(2)
+					.preferredColorScheme(.dark)
+				CreateFlipView()
+					.tabItem { Image(systemName: "plus.circle.fill").renderingMode(.original) }
+					.tag(3)
+					.preferredColorScheme(.dark)
+				ContactUsView()
+					.tabItem { Image(systemName: "questionmark.circle") }
+					.tag(4)
+					.preferredColorScheme(.dark)
+				ProfileView()
+					.tabItem { Image(systemName: "person.crop.square.fill") }
+					.tag(5)
+					.preferredColorScheme(.dark)
+			}
+		}
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+			ContentView(model: FlipsDataModel.designModel)
+				.preferredColorScheme(.dark)
     }
 }

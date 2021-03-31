@@ -9,11 +9,29 @@ import Foundation
 
 struct Rating: Codable {
 	
-	let id: UUID
-	let timestamp: Date
+	public var id: UUID = UUID()
+	public var timestamp: Date = Date()
 	let score: Int16
-	let flip: Flip
 	let user: User
+	let flip: Flip
+	
+	init(score: Int16, user: User, flip: Flip) {
+		
+		self.score = score
+		self.user = user
+		self.flip = flip
+		
+	}
+	
+	init(ratingEntity: RatingEntity) {
+		
+		self.id = ratingEntity.id!
+		self.timestamp = ratingEntity.timestamp!
+		self.score = ratingEntity.score
+		self.flip = Flip(flipEntity: ratingEntity.flip!)
+		self.user = User(userEntity: ratingEntity.user!)
+		
+	}
 	
 	func convertToManagedObject() -> RatingEntity {
 		
@@ -28,13 +46,5 @@ struct Rating: Codable {
 		return ratingEntity
 	}
 	
-	init(ratingEntity: RatingEntity) {
-		
-		self.id = ratingEntity.id!
-		self.timestamp = ratingEntity.timestamp!
-		self.score = ratingEntity.score
-		self.flip = Flip(flipEntity: ratingEntity.flip!)
-		self.user = User(userEntity: ratingEntity.user!)
-		
-	}
+	
 }

@@ -11,10 +11,10 @@ struct LoadingView: View {
   
 	@Binding private var networkDataLoaded: Bool
 	
-	init(networkDataLoaded: Binding<Bool>) {
+	init(model: FlipsCoreDataModel, networkDataLoaded: Binding<Bool>) {
 		_networkDataLoaded = networkDataLoaded
-		// let dataModel = ClassAssignmentsCoreDataModel()
-		// dataModel.loadAllDatabaseData(isLoaded: networkDataLoaded)
+		let dataModel = FlipsCoreDataModel()
+		dataModel.loadAllDatabaseData(isLoaded: networkDataLoaded)
 	}
 	
 	var body: some View {
@@ -26,6 +26,7 @@ struct LoadingView: View {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-			LoadingView(networkDataLoaded: .constant(false))
+			LoadingView(model: FlipsCoreDataModel(), networkDataLoaded: .constant(false))
+				.preferredColorScheme(.dark)
     }
 }

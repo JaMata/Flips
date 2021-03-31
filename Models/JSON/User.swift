@@ -5,11 +5,15 @@
 //  Created by Jordan Foster on 3/27/21.
 //
 
+// TODO: Resolve the JSON load issue, probably by adding dummy id & timestamp for now
+// TODO: Get FlipsView, CreateFlipView, and FeedbackView stubs
+// TODO: Put the necessary notes in ppt for submission tonight.
+
 import Foundation
 
 struct User: Codable {
-	let id: UUID
-	let timestamp: Date
+	public var id: UUID = UUID()
+	public var timestamp: Date = Date()
 	let username: String
 	let name: String
 	let email: String
@@ -41,13 +45,13 @@ struct User: Codable {
 		// loop over flips, and add separately
 		for flip in self.flips {
 			let flipEntity = FlipsCoreDataModel.getFlipWith(uuid: flip.id)
-			userEntity.addToFlips(flipEntity)
+			userEntity.addToFlips(flipEntity!)
 		}
 		
-		// loop over flips, and add separately
+		// loop over ratings, and add separately
 		for rating in self.ratings {
 			let ratingEntity = FlipsCoreDataModel.getRatingWith(uuid: rating.id)
-			userEntity.addToFlips(flipEntity)
+			userEntity.addToRatings(ratingEntity!)
 		}
 		
 		return userEntity

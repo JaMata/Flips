@@ -9,8 +9,8 @@ import Foundation
 
 struct Feedback: Codable {
 	
-	let id: UUID
-	let timestamp: Date
+	public var id: UUID = UUID()
+	public var timestamp: Date = Date()
 	let body: String
 	
 	func convertToManagedObject() -> FeedbackEntity {
