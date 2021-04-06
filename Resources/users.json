@@ -4,49 +4,59 @@
 		"name" : "Bill Wolner",
 		"profileImage" : "https://i.imgur.com/GbCHvXU.png",
 		"email" : "bill.wol@yahoo.com",
-		"type" : "standard",
+		"type" : "Standard",
 		"state" : "Arkansas",
 		"city" : "Alpena",
-		"bio" : "hi"
+		"bio" : "hi",
+		"flips" : [],
+		"ratings" : []
 	},
 	{
 		"username" : "bird-watcher",
 		"name" : "Stan Evans",
 		"profileImage" : "https://i.imgur.com/f1czV9q.png",
 		"email" : "s.evans64@yahoo.com",
-		"type" : "standard",
+		"type" : "Standard",
 		"state" : "Virginia",
 		"city" : "Newport",
-		"bio" : "Please rate my flips! I want to go pro!"
+		"bio" : "Please rate my flips! I want to go pro!",
+		"flips" : [],
+		"ratings" : []
 	},
 	{
 		"username" : "c_oaks",
 		"name" : "Senna Reeves",
 		"profileImage" : "https://i.imgur.com/JZvOcob.png",
 		"email" : "reeves4010@yahoo.com",
-		"type" : "standard",
+		"type" : "Standard",
 		"state" : "California",
 		"city" : "Los Angeles",
-		"bio" : "Representing the West Coast"
+		"bio" : "Representing the West Coast",
+		"flips" : [],
+		"ratings" : []
 	},
 	{
 		"username" : "smoochTimes",
 		"name" : "Big Smooch",
 		"profileImage" : "https://i.imgur.com/DNofKeR.png",
 		"email" : "gibblers.gooblers@yahoo.com",
-		"type" : "admin",
+		"type" : "Admin",
 		"state" : "Hell",
 		"city" : "Michigan",
-		"bio" : "<3 xoxo <3"
+		"bio" : "<3 xoxo <3",
+		"flips" : [],
+		"ratings" : []
 	},
 	{
 		"username" : "poop_butt_jr",
 		"name" : "Nathan Rice",
 		"profileImage" : "https://i.imgur.com/eLWA4TT.jpeg",
 		"email" : "n.soul.rice@yahoo.com",
-		"type" : "standard",
+		"type" : "Standard",
 		"state" : "Raleigh",
 		"city" : "North Carolina",
-		"bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\""
+		"bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\"",
+		"flips" : [],
+		"ratings" : []
 	}
 ]

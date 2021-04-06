@@ -11,7 +11,6 @@ struct FlipsDataModel: FlipsModel {
 	
 	var users: [User]
 	var flips: [Flip]
-	// var ratings: [Rating]
 	var feedbacks: [Feedback]
 	
 	static var designModel: FlipsDataModel = testModel
@@ -21,12 +20,11 @@ struct FlipsDataModelTestData {
 	
 	var users: [User]?
 	var flips: [Flip]?
-	// var ratings: [Rating]?
 	var feedbacks: [Feedback]?
 	
 	init() {
 		do {
-			if let bundlePath = Bundle.main.path(forResource: "user", ofType: "json"),
+			if let bundlePath = Bundle.main.path(forResource: "users", ofType: "json"),
 				let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
 				let decoder = JSONDecoder()
 				users = try decoder.decode([User].self, from: jsonData)

@@ -12,8 +12,7 @@
 import Foundation
 
 struct User: Codable {
-	public var id: UUID = UUID()
-	public var timestamp: Date = Date()
+	
 	let username: String
 	let name: String
 	let email: String
@@ -21,16 +20,29 @@ struct User: Codable {
 	let bio: String
 	let city: String
 	let state: String
-	let flips: [Flip]
-	let ratings: [Rating]
+	let flips: [Flip]?
+	let ratings: [Rating]?
 	let type: UserType
+	
+	init(username: String, name: String, email: String, profileImage: String? = "https://i.imgur.com/1jDaiew.jpg", bio: String? = "", city: String? = "", state: String? = "", flips: [Flip]? = [], ratings: [Rating]? = [], type: String? = "Standard") {
+		
+		self.username = username
+		self.name = name
+		self.email = email
+		self.profileImage = profileImage!
+		self.bio = bio!
+		self.city = city!
+		self.state = state!
+		self.flips = flips!
+		self.ratings = ratings!
+		self.type = UserType(rawValue: type!)!
+		
+	}
 	
 	func convertToManagedObject() -> UserEntity {
 		
 		let userEntity = UserEntity(context: PersistenceController.shared.container.viewContext)
 		
-		userEntity.id = self.id
-		userEntity.timestamp = self.timestamp
 		userEntity.username = self.username
 		userEntity.name = self.name
 		userEntity.email = self.email
@@ -43,13 +55,13 @@ struct User: Codable {
 		userEntity.type = self.type.rawValue
 
 		// loop over flips, and add separately
-		for flip in self.flips {
+		for flip in self.flips! {
 			let flipEntity = FlipsCoreDataModel.getFlipWith(uuid: flip.id)
 			userEntity.addToFlips(flipEntity!)
 		}
 		
 		// loop over ratings, and add separately
-		for rating in self.ratings {
+		for rating in self.ratings! {
 			let ratingEntity = FlipsCoreDataModel.getRatingWith(uuid: rating.id)
 			userEntity.addToRatings(ratingEntity!)
 		}
@@ -59,8 +71,6 @@ struct User: Codable {
 	
 	init(userEntity: UserEntity) {
 		
-		self.id = userEntity.id!
-		self.timestamp = userEntity.timestamp!
 		self.username = userEntity.username!
 		self.name = userEntity.name!
 		self.email = userEntity.email!

@@ -9,14 +9,16 @@ import Foundation
 
 struct Rating: Codable {
 	
-	public var id: UUID = UUID()
-	public var timestamp: Date = Date()
+	let id: UUID
+	let timestamp: Date
 	let score: Int16
 	let user: User
 	let flip: Flip
 	
 	init(score: Int16, user: User, flip: Flip) {
 		
+		self.id = UUID()
+		self.timestamp = Date()
 		self.score = score
 		self.user = user
 		self.flip = flip
@@ -41,10 +43,9 @@ struct Rating: Codable {
 		ratingEntity.timestamp = self.timestamp
 		ratingEntity.score = self.score
 		ratingEntity.flip = FlipsCoreDataModel.getFlipWith(uuid: self.flip.id)
-		ratingEntity.user = FlipsCoreDataModel.getUserWith(uuid: self.user.id)
+		ratingEntity.user = FlipsCoreDataModel.getUserWith(username: self.user.username)
 		
 		return ratingEntity
+		
 	}
-	
-	
 }

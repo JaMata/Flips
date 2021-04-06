@@ -10,6 +10,5 @@ import Foundation
 protocol FlipsModel {
 	var users: [User] { get }
 	var flips: [Flip] { get }
-	// var ratings: [Rating] { get }
 	var feedbacks: [Feedback] { get }
 }

@@ -45,20 +45,25 @@ struct FlipsCoreDataModel: FlipsModel {
 	}
 	
 	func loadAllDatabaseData(isLoaded: Binding<Bool>) {
+		
 		emptyDB()
 		
-		loadUserDatasetFromJSON()
-		loadFlipDatasetFromJSON()
-		loadFeedbackDatasetFromJSON()
+		FlipsCoreDataModel.context.performAndWait({
+			
+			loadUserDatasetFromJSON()
+			loadFlipDatasetFromJSON()
+			loadFeedbackDatasetFromJSON()
+			
+		})
 		
-		// link the objects to eachother ?
 		generateRatings(count: 30)
+		
 	}
 	
 	func loadUserDatasetFromJSON() {
 			
 		guard let users = flipsTestData.users else {
-			return print("Error loading users")
+			return print("Error loading users: \(flipsTestData)")
 		}
 		
 		users.forEach({ user in _ = user.convertToManagedObject() })
@@ -118,9 +123,9 @@ struct FlipsCoreDataModel: FlipsModel {
 	}
 	
 	
-	/// Returns a `UserEntity` for a given `uuid`
-	static func getUserWith(uuid: UUID) -> UserEntity? {
-		let request = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserById", substitutionVariables: ["id" : uuid])
+	/// Returns a `UserEntity` for a given `username`
+	static func getUserWith(username: String) -> UserEntity? {
+		let request = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserByUsername", substitutionVariables: ["username" : username])
 		
 		do {
 			let user = try FlipsCoreDataModel.context.fetch(request!).first as! UserEntity
@@ -129,6 +134,18 @@ struct FlipsCoreDataModel: FlipsModel {
 			print("User fetch failed")
 			return nil
 		}
+	}
+	
+	/// Returns a `User` for a given `username`
+	static func getUser(username: String) -> User? {
+		
+		let tempData = FlipsDataModelTestData()
+		
+		if let user = tempData.users!.first(where: { $0.username == username }) {
+			return user;
+		}
+		
+		return nil
 	}
 	
 	/// Returns a `FlipEntity` for a given `uuid`
@@ -142,6 +159,18 @@ struct FlipsCoreDataModel: FlipsModel {
 			print("Flip fetch failed")
 			return nil
 		}
+	}
+	
+	/// Returns a `FlipEntity` for a given `uuid`
+	static func getFlip(id: UUID) -> Flip? {
+		
+		let tempData = FlipsDataModelTestData()
+		
+		if let flip = tempData.flips!.first(where: { $0.id == id }) {
+			return flip;
+		}
+		
+		return nil
 	}
 	
 	/// Returns a `RatingEntity` for a given `uuid`
@@ -191,20 +220,18 @@ struct FlipsCoreDataModel: FlipsModel {
 	/// Helps simulate the social aspect of Flips
 	func generateRatings(count: Int16) {
 		
-		print("Generate Ratings:")
+		// TODO: Rating's user and flip must be a unique combination.
 		
 		for _ in 1...count {
 			
 			let userRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "UserEntity")
 			if let userCount = try? FlipsCoreDataModel.context.count(for: userRequest) {
-				userRequest.fetchOffset = Int.random(in: 0...userCount)
-				print("Users -> \(userCount)")
+				userRequest.fetchOffset = Int.random(in: 0..<userCount)
 			}
 			
 			let flipRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FlipEntity")
 			if let flipCount = try? FlipsCoreDataModel.context.count(for: flipRequest) {
-				flipRequest.fetchOffset = Int.random(in: 0...flipCount)
-				print("\nFlips -> \(flipCount)")
+				flipRequest.fetchOffset = Int.random(in: 0..<flipCount)
 			}
 			
 			userRequest.fetchLimit = 1
@@ -223,8 +250,8 @@ struct FlipsCoreDataModel: FlipsModel {
 				let randomUserEntity = randomUsers!.first!
 				let randomFlipEntity = randomFlips!.first!
 				
-				let randomUser = User(userEntity: randomUserEntity)
-				let randomFlip = Flip(flipEntity: randomFlipEntity)
+				let randomUser = FlipsCoreDataModel.getUser(username: randomUserEntity.username!)!
+				let randomFlip = FlipsCoreDataModel.getFlip(id: randomFlipEntity.id!)!
 				
 				let newRating = Rating(score: Int16.random(in: 0...3), user: randomUser, flip: randomFlip)
 				let newRatingEntity = newRating.convertToManagedObject()

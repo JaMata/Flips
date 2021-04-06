@@ -1,130 +1,390 @@
 [
 	{
+		"id" : "E621E1F8-C36C-495A-93FC-0C247A3E6E1A",
+		"timestamp" : 1617568854,
 		"image" : "https://i.imgur.com/Jql2Hkp.gif",
 		"trick" : "Kickflip",
 		"imageDescription" : "I'm a mad-lad!",
+		"author" : {
+			"username" : "bird-watcher",
+		 "name" : "Stan Evans",
+		 "profileImage" : "https://i.imgur.com/f1czV9q.png",
+		 "email" : "s.evans64@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Virginia",
+		 "city" : "Newport",
+		 "bio" : "Please rate my flips! I want to go pro!"
+	 },
 		"latitude" : 42.434735,
-		"longitude" : -83.9937762
+		"longitude" : -83.9937762,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E1B",
+		"timestamp" : 1617482454,
 		"image" : "https://i.imgur.com/Vmmr0zs.gif",
 		"trick" : "Heelflip",
 		"imageDescription" : "I'm still a mad-lad!",
+		"author" : {
+			"username" : "bird-watcher",
+		 "name" : "Stan Evans",
+		 "profileImage" : "https://i.imgur.com/f1czV9q.png",
+		 "email" : "s.evans64@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Virginia",
+		 "city" : "Newport",
+		 "bio" : "Please rate my flips! I want to go pro!"
+	 },
 		"latitude" : 43.4435854,
-		"longitude" : -112.81277
+		"longitude" : -112.81277,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E1C",
+		"timestamp" : 1617396054,
 		"image" : "https://i.imgur.com/JEskXfB.gif",
 		"trick" : "Frontside flip",
 		"imageDescription" : "Took a lot of hits, but I got it",
+		"author" : {
+			"username" : "rockstar80s",
+		 "name" : "Bill Wolner",
+		 "profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		 "email" : "bill.wol@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Arkansas",
+		 "city" : "Alpena",
+		 "bio" : "hi"
+	 },
 		"latitude" : 35.772162,
-		"longitude" : -88.8764861
+		"longitude" : -88.8764861,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E1D",
+		"timestamp" : 1614631254,
 		"image" : "https://i.imgur.com/HWYYMDF.gif",
 		"trick" : "Backside flip",
 		"imageDescription" : "I'll let the flip speak for itself",
+		"author" : {
+			"username" : "smoochTimes",
+		 "name" : "Big Smooch",
+		 "profileImage" : "https://i.imgur.com/DNofKeR.png",
+		 "email" : "gibblers.gooblers@yahoo.com",
+		 "type" : "Admin",
+		 "state" : "Hell",
+		 "city" : "Michigan",
+		 "bio" : "<3 xoxo <3"
+	 },
 		"latitude" : 42.434735,
-		"longitude" : -83.9937762
+		"longitude" : -83.9937762,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E1E",
+		"timestamp" : 1614717654,
 		"image" : "https://i.imgur.com/CcV2L9a.gif",
 		"trick" : "Kickflip",
-		"imageDescription" : ""
+		"imageDescription" : "",
+		"author" : {
+			"username" : "rockstar80s",
+		 "name" : "Bill Wolner",
+		 "profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		 "email" : "bill.wol@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Arkansas",
+		 "city" : "Alpena",
+		 "bio" : "hi"
+	 },
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E1F",
+		"timestamp" : 1614804054,
 		"image" : "https://i.imgur.com/lJjqdyh.gif",
 		"trick" : "Kickflip",
-		"imageDescription" : ""
+		"imageDescription" : "",
+		"author" : {
+			"username" : "bird-watcher",
+		 "name" : "Stan Evans",
+		 "profileImage" : "https://i.imgur.com/f1czV9q.png",
+		 "email" : "s.evans64@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Virginia",
+		 "city" : "Newport",
+		 "bio" : "Please rate my flips! I want to go pro!"
+	 },
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E2A",
+		"timestamp" : 1614890454,
 		"image" : "https://i.imgur.com/rbrCF0d.gif",
 		"trick" : "Kickflip",
 		"imageDescription" : "I NEVER BACK DOWN!",
+		"author" : {
+			"username" : "smoochTimes",
+		 "name" : "Big Smooch",
+		 "profileImage" : "https://i.imgur.com/DNofKeR.png",
+		 "email" : "gibblers.gooblers@yahoo.com",
+		 "type" : "Admin",
+		 "state" : "Hell",
+		 "city" : "Michigan",
+		 "bio" : "<3 xoxo <3"
+	 },
 		"latitude" : 43.4435854,
-		"longitude" : -112.81277
+		"longitude" : -112.81277,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E2B",
+		"timestamp" : 1614976854,
 		"image" : "https://i.imgur.com/ZYOxmBg.gif",
 		"trick" : "Ollie",
 		"imageDescription" : "No flip, but still nice!",
+		"author" : {
+			"username" : "rockstar80s",
+		 "name" : "Bill Wolner",
+		 "profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		 "email" : "bill.wol@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Arkansas",
+		 "city" : "Alpena",
+		 "bio" : "hi"
+	 },
 		"latitude" : 42.434735,
-		"longitude" : -83.9937762
+		"longitude" : -83.9937762,
+		"ratings" : []
 	},
 	{
+		"id" : "E621E1F8-C36C-495A-93FC-0C247A3E6E2C",
+		"timestamp" : 1615063254,
 		"image" : "https://i.imgur.com/4PjZ3wi.gif",
 		"trick" : "Ollie",
 		"imageDescription" : "My friend is crazy",
+		"author" : {
+			"username" : "poop_butt_jr",
+		 "name" : "Nathan Rice",
+		 "profileImage" : "https://i.imgur.com/eLWA4TT.jpeg",
+		 "email" : "n.soul.rice@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Raleigh",
+		 "city" : "North Carolina",
+		 "bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\""
+	 },
 		"latitude" : 35.5403004,
-		"longitude" : -79.7477886
+		"longitude" : -79.7477886,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E2D",
+		"timestamp" : 1617294054,
 		"image" : "https://i.imgur.com/movkgfn.gif",
 		"trick" : "Ollie",
 		"imageDescription" : "c r a c k e d",
+		"author" : {
+			"username" : "bird-watcher",
+		 "name" : "Stan Evans",
+		 "profileImage" : "https://i.imgur.com/f1czV9q.png",
+		 "email" : "s.evans64@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Virginia",
+		 "city" : "Newport",
+		 "bio" : "Please rate my flips! I want to go pro!"
+	 },
 		"latitude" : 33.1920804,
-		"longitude" : -107.3231996
+		"longitude" : -107.3231996,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E2E",
+		"timestamp" : 1615134054,
 		"image" : "https://i.imgur.com/YiOcOXA.gif",
 		"trick" : "Hardflip",
 		"imageDescription" : "Hardest flip of my life",
+		"author" : {
+			"username" : "rockstar80s",
+		 "name" : "Bill Wolner",
+		 "profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		 "email" : "bill.wol@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Arkansas",
+		 "city" : "Alpena",
+		 "bio" : "hi"
+	 },
 		"latitude" : 39.7999778,
-		"longitude" : -104.9140544
+		"longitude" : -104.9140544,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E2F",
+		"timestamp" : 1615220454,
 		"image" : "https://i.imgur.com/76Rw1aq.gif",
 		"trick" : "Hardflip",
 		"imageDescription" : "security kicked me out right after",
+		"author" : {
+			"username" : "poop_butt_jr",
+		 "name" : "Nathan Rice",
+		 "profileImage" : "https://i.imgur.com/eLWA4TT.jpeg",
+		 "email" : "n.soul.rice@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Raleigh",
+		 "city" : "North Carolina",
+		 "bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\""
+	 },
 		"latitude" : 39.2336469,
-		"longitude" : -121.1563705
+		"longitude" : -121.1563705,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E3A",
+		"timestamp" : 1615306854,
 		"image" : "https://i.imgur.com/v1zVp3I.gif",
 		"trick" : "Hardflip",
-		"imageDescription" : ""
+		"imageDescription" : "",
+		"author" : {
+			"username" : "smoochTimes",
+		 "name" : "Big Smooch",
+		 "profileImage" : "https://i.imgur.com/DNofKeR.png",
+		 "email" : "gibblers.gooblers@yahoo.com",
+		 "type" : "Admin",
+		 "state" : "Hell",
+		 "city" : "Michigan",
+		 "bio" : "<3 xoxo <3"
+	 },
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E3B",
+		"timestamp" : 1615393254,
 		"image" : "https://i.imgur.com/lD917YV.gif",
 		"trick" : "Hardflip",
-		"imageDescription" : ""
+		"imageDescription" : "",
+		"author" : {
+			"username" : "bird-watcher",
+		 "name" : "Stan Evans",
+		 "profileImage" : "https://i.imgur.com/f1czV9q.png",
+		 "email" : "s.evans64@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Virginia",
+		 "city" : "Newport",
+		 "bio" : "Please rate my flips! I want to go pro!"
+	 },
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E3C",
+		"timestamp" : 1615479654,
 		"image" : "https://i.imgur.com/FyaZRZ1.gif",
 		"trick" : "Tre flip",
 		"imageDescription" : "BOOM",
+		"author" : {
+			"username" : "smoochTimes",
+		 "name" : "Big Smooch",
+		 "profileImage" : "https://i.imgur.com/DNofKeR.png",
+		 "email" : "gibblers.gooblers@yahoo.com",
+		 "type" : "Admin",
+		 "state" : "Hell",
+		 "city" : "Michigan",
+		 "bio" : "<3 xoxo <3"
+	 },
 		"latitude" : 40.5269138,
-		"longitude" : -89.0571699
+		"longitude" : -89.0571699,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E3D",
+		"timestamp" : 1609474854,
 		"image" : "https://i.imgur.com/cQAISH9.gif",
 		"trick" : "Tre flip",
-		"imageDescription" : ""
+		"imageDescription" : "",
+		"author" : {
+			"username" : "c_oaks",
+		 "name" : "Senna Reeves",
+		 "profileImage" : "https://i.imgur.com/JZvOcob.png",
+		 "email" : "reeves4010@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "California",
+		 "city" : "Los Angeles",
+		 "bio" : "Representing the West Coast"
+	 },
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E3E",
+		"timestamp" : 1617078054,
 		"image" : "https://i.imgur.com/xKb1AZl.jpeg",
 		"trick" : "Tre flip",
 		"imageDescription" : "",
+		"author" : {
+			"username" : "rockstar80s",
+		 "name" : "Bill Wolner",
+		 "profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		 "email" : "bill.wol@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Arkansas",
+		 "city" : "Alpena",
+		 "bio" : "hi"
+	 },
 		"latitude" : -16.13909,
-		"longitude" : 37.39809
+		"longitude" : 37.39809,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E3F",
+		"timestamp" : 1616732454,
 		"image" : "https://i.imgur.com/lfuUqF3.jpeg",
 		"trick" : "Tre flip",
 		"imageDescription" : "front foot catch. I wish I had these!",
+		"author" : {
+			"username" : "c_oaks",
+		 "name" : "Senna Reeves",
+		 "profileImage" : "https://i.imgur.com/JZvOcob.png",
+		 "email" : "reeves4010@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "California",
+		 "city" : "Los Angeles",
+		 "bio" : "Representing the West Coast"
+	 },
 		"latitude" : -4.63499,
-		"longitude" : 136.21109
+		"longitude" : 136.21109,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E4A",
+		"timestamp" : 1616732454,
 		"image" : "https://i.imgur.com/mk1ak0k.gif",
 		"trick" : "Tre flip",
 		"imageDescription" : "360",
+		"author" : {
+			"username" : "rockstar80s",
+		 "name" : "Bill Wolner",
+		 "profileImage" : "https://i.imgur.com/GbCHvXU.png",
+		 "email" : "bill.wol@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "Arkansas",
+		 "city" : "Alpena",
+		 "bio" : "hi"
+	 },
 		"latitude" : 65.22272,
-		"longitude" : 31.55010
+		"longitude" : 31.55010,
+		"ratings" : []
 	},
 	{
+		"id": "E621E1F8-C36C-495A-93FC-0C247A3E6E4B",
+		"timestamp" : 1612326054,
 		"image" : "https://i.imgur.com/g1CcOOT.gif",
 		"trick" : "Backside flip",
-		"imageDescription" : "I could've gone for a full 360"
+		"imageDescription" : "I could've gone for a full 360",
+		"author" : {
+			"username" : "c_oaks",
+		 "name" : "Senna Reeves",
+		 "profileImage" : "https://i.imgur.com/JZvOcob.png",
+		 "email" : "reeves4010@yahoo.com",
+		 "type" : "Standard",
+		 "state" : "California",
+		 "city" : "Los Angeles",
+		 "bio" : "Representing the West Coast"
+	 },
+		"ratings" : []
 	}
 ]
