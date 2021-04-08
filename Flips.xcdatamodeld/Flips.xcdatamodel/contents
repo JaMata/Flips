@@ -38,6 +38,7 @@
     <fetchRequest name="FeedbackById" entity="FeedbackEntity" predicateString="id == $id"/>
     <fetchRequest name="FlipById" entity="FlipEntity" predicateString="id == $id"/>
     <fetchRequest name="RatingById" entity="RatingEntity" predicateString="id == $id"/>
+    <fetchRequest name="RatingByUserAndFlip" entity="RatingEntity" predicateString="user == $user AND flip == $flip"/>
     <fetchRequest name="UserByUsername" entity="UserEntity" predicateString="username == $username"/>
     <elements>
         <element name="FeedbackEntity" positionX="-54" positionY="90" width="128" height="74"/>

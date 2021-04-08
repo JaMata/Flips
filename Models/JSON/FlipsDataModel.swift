@@ -25,19 +25,19 @@ struct FlipsDataModelTestData {
 	init() {
 		do {
 			if let bundlePath = Bundle.main.path(forResource: "users", ofType: "json"),
-				let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+				 let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
 				let decoder = JSONDecoder()
 				users = try decoder.decode([User].self, from: jsonData)
 			}
 			
 			if let bundlePath = Bundle.main.path(forResource: "flips", ofType: "json"),
-				let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-					let decoder = JSONDecoder()
-					flips = try decoder.decode([Flip].self, from: jsonData)
+				 let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+				let decoder = JSONDecoder()
+				flips = try decoder.decode([Flip].self, from: jsonData)
 			}
 			
 			if let bundlePath = Bundle.main.path(forResource: "feedbacks", ofType: "json"),
-				let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+				 let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
 				let decoder = JSONDecoder()
 				feedbacks = try decoder.decode([Feedback].self, from: jsonData)
 			}
@@ -48,7 +48,7 @@ struct FlipsDataModelTestData {
 		
 	}
 }
-	
+
 let testData = FlipsDataModelTestData()
 let testModel = FlipsDataModel(users: testData.users!, flips: testData.flips!, feedbacks: testData.feedbacks!)
 

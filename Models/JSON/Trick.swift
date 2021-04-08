@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Trick: String, Codable {
+enum Trick: String, Codable, CaseIterable {
 	
 	case Ollie = "Ollie"
 	case Kickflip = "Kickflip"

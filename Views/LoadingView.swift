@@ -21,6 +21,9 @@ struct LoadingView: View {
 		VStack {
 			ProgressView()
 		}
+		.onAppear {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { networkDataLoaded.toggle() }
+		}
 	}
 }
 

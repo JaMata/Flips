@@ -13,7 +13,9 @@
 		 "type" : "Standard",
 		 "state" : "Virginia",
 		 "city" : "Newport",
-		 "bio" : "Please rate my flips! I want to go pro!"
+		 "bio" : "Please rate my flips! I want to go pro!",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 42.434735,
 		"longitude" : -83.9937762,
@@ -33,7 +35,9 @@
 		 "type" : "Standard",
 		 "state" : "Virginia",
 		 "city" : "Newport",
-		 "bio" : "Please rate my flips! I want to go pro!"
+		 "bio" : "Please rate my flips! I want to go pro!",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 43.4435854,
 		"longitude" : -112.81277,
@@ -53,7 +57,9 @@
 		 "type" : "Standard",
 		 "state" : "Arkansas",
 		 "city" : "Alpena",
-		 "bio" : "hi"
+		 "bio" : "hi",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 35.772162,
 		"longitude" : -88.8764861,
@@ -73,7 +79,9 @@
 		 "type" : "Admin",
 		 "state" : "Hell",
 		 "city" : "Michigan",
-		 "bio" : "<3 xoxo <3"
+		 "bio" : "<3 xoxo <3",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 42.434735,
 		"longitude" : -83.9937762,
@@ -93,7 +101,9 @@
 		 "type" : "Standard",
 		 "state" : "Arkansas",
 		 "city" : "Alpena",
-		 "bio" : "hi"
+		 "bio" : "hi",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"ratings" : []
 	},
@@ -111,7 +121,9 @@
 		 "type" : "Standard",
 		 "state" : "Virginia",
 		 "city" : "Newport",
-		 "bio" : "Please rate my flips! I want to go pro!"
+		 "bio" : "Please rate my flips! I want to go pro!",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"ratings" : []
 	},
@@ -129,7 +141,9 @@
 		 "type" : "Admin",
 		 "state" : "Hell",
 		 "city" : "Michigan",
-		 "bio" : "<3 xoxo <3"
+		 "bio" : "<3 xoxo <3",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 43.4435854,
 		"longitude" : -112.81277,
@@ -149,7 +163,9 @@
 		 "type" : "Standard",
 		 "state" : "Arkansas",
 		 "city" : "Alpena",
-		 "bio" : "hi"
+		 "bio" : "hi",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 42.434735,
 		"longitude" : -83.9937762,
@@ -169,7 +185,9 @@
 		 "type" : "Standard",
 		 "state" : "Raleigh",
 		 "city" : "North Carolina",
-		 "bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\""
+		 "bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\"",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 35.5403004,
 		"longitude" : -79.7477886,
@@ -189,7 +207,9 @@
 		 "type" : "Standard",
 		 "state" : "Virginia",
 		 "city" : "Newport",
-		 "bio" : "Please rate my flips! I want to go pro!"
+		 "bio" : "Please rate my flips! I want to go pro!",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 33.1920804,
 		"longitude" : -107.3231996,
@@ -209,7 +229,9 @@
 		 "type" : "Standard",
 		 "state" : "Arkansas",
 		 "city" : "Alpena",
-		 "bio" : "hi"
+		 "bio" : "hi",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 39.7999778,
 		"longitude" : -104.9140544,
@@ -229,7 +251,9 @@
 		 "type" : "Standard",
 		 "state" : "Raleigh",
 		 "city" : "North Carolina",
-		 "bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\""
+		 "bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\"",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 39.2336469,
 		"longitude" : -121.1563705,
@@ -249,7 +273,9 @@
 		 "type" : "Admin",
 		 "state" : "Hell",
 		 "city" : "Michigan",
-		 "bio" : "<3 xoxo <3"
+		 "bio" : "<3 xoxo <3",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"ratings" : []
 	},
@@ -267,7 +293,9 @@
 		 "type" : "Standard",
 		 "state" : "Virginia",
 		 "city" : "Newport",
-		 "bio" : "Please rate my flips! I want to go pro!"
+		 "bio" : "Please rate my flips! I want to go pro!",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"ratings" : []
 	},
@@ -285,7 +313,9 @@
 		 "type" : "Admin",
 		 "state" : "Hell",
 		 "city" : "Michigan",
-		 "bio" : "<3 xoxo <3"
+		 "bio" : "<3 xoxo <3",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 40.5269138,
 		"longitude" : -89.0571699,
@@ -305,7 +335,9 @@
 		 "type" : "Standard",
 		 "state" : "California",
 		 "city" : "Los Angeles",
-		 "bio" : "Representing the West Coast"
+		 "bio" : "Representing the West Coast",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"ratings" : []
 	},
@@ -323,7 +355,9 @@
 		 "type" : "Standard",
 		 "state" : "Arkansas",
 		 "city" : "Alpena",
-		 "bio" : "hi"
+		 "bio" : "hi",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : -16.13909,
 		"longitude" : 37.39809,
@@ -343,7 +377,9 @@
 		 "type" : "Standard",
 		 "state" : "California",
 		 "city" : "Los Angeles",
-		 "bio" : "Representing the West Coast"
+		 "bio" : "Representing the West Coast",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : -4.63499,
 		"longitude" : 136.21109,
@@ -363,7 +399,9 @@
 		 "type" : "Standard",
 		 "state" : "Arkansas",
 		 "city" : "Alpena",
-		 "bio" : "hi"
+		 "bio" : "hi",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"latitude" : 65.22272,
 		"longitude" : 31.55010,
@@ -383,7 +421,9 @@
 		 "type" : "Standard",
 		 "state" : "California",
 		 "city" : "Los Angeles",
-		 "bio" : "Representing the West Coast"
+		 "bio" : "Representing the West Coast",
+		 "flips" : [],
+		 "ratings" : []
 	 },
 		"ratings" : []
 	}

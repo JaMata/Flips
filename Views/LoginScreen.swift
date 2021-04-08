@@ -35,6 +35,8 @@ struct LoginScreen: View {
 					HStack {
 						Spacer(minLength: 50)
 						TextField("Username", text: $username)
+							.autocapitalization(.none)
+							.disableAutocorrection(true)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
 							.border(Color.accentColor)
 						Spacer(minLength: 50)
@@ -49,6 +51,7 @@ struct LoginScreen: View {
 					HStack {
 						Spacer(minLength: 50)
 						Button(action: {
+							print("USERNAME: \(self.username)")
 							self.saveUserName(userName: self.username)
 							self.userAuth.login()
 						}, label: { Text("login") })

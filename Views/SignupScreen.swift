@@ -83,6 +83,7 @@ struct SignupScreen: View {
 					}, label: { Text("sign up") })
 					.frame(maxWidth: .infinity)
 					.border(Color.accentColor)
+					.disabled(true) // TODO:
 					Spacer(minLength: 50)
 				}
 			}

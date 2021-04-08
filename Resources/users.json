@@ -18,7 +18,7 @@
 		"email" : "s.evans64@yahoo.com",
 		"type" : "Standard",
 		"state" : "Virginia",
-		"city" : "Newport",
+		"city" : "Newport News",
 		"bio" : "Please rate my flips! I want to go pro!",
 		"flips" : [],
 		"ratings" : []
@@ -36,13 +36,13 @@
 		"ratings" : []
 	},
 	{
-		"username" : "smoochTimes",
+		"username" : "smooch_times",
 		"name" : "Big Smooch",
 		"profileImage" : "https://i.imgur.com/DNofKeR.png",
 		"email" : "gibblers.gooblers@yahoo.com",
 		"type" : "Admin",
-		"state" : "Hell",
-		"city" : "Michigan",
+		"state" : "Michigan",
+		"city" : "Hell",
 		"bio" : "<3 xoxo <3",
 		"flips" : [],
 		"ratings" : []
@@ -53,8 +53,8 @@
 		"profileImage" : "https://i.imgur.com/eLWA4TT.jpeg",
 		"email" : "n.soul.rice@yahoo.com",
 		"type" : "Standard",
-		"state" : "Raleigh",
-		"city" : "North Carolina",
+		"state" : "North Carolina",
+		"city" : "Raleigh",
 		"bio" : "Jeremiah 29:11 - \"For I know the plans I have for you\" declares the LORD, \"plans to prosper you and not to harm you, plans to give you hope and a future.\"",
 		"flips" : [],
 		"ratings" : []

@@ -56,7 +56,18 @@ struct FlipsCoreDataModel: FlipsModel {
 			
 		})
 		
-		generateRatings(count: 30)
+		// Assign Users to Flips and Generate Random Flip Ratings
+		assignUsersToFlips(completion: { (success) -> Void in
+			if success {
+				generateRatings(count: 30, completion: { (success) -> Void in
+					if success {
+						print("setting isLoaded to true!\n\n")
+						isLoaded.wrappedValue.toggle()
+						
+					} else { print("Error during generation of Ratings. Stuck at Loading Screen!")}
+				})
+			} else { print("Error during User-Flip Entity Assignment. Stuck at Loading Screen!") }
+		})
 		
 	}
 	
@@ -89,24 +100,7 @@ struct FlipsCoreDataModel: FlipsModel {
 			print("Error saving flip to core data \(error)")
 		}
 	}
-	
-	/* Randomly generated
-	func loadRatingDatasetFromJSON() {
 		
-		guard let ratings = flipsTestData.ratings else {
-			return print("Error loading ratings ")
-		}
-		
-		ratings.forEach({ rating in _ = rating.convertToManagedObject() })
-		
-		do {
-			try FlipsCoreDataModel.context.save()
-		} catch {
-			print("Error saving rating to core data \(error)")
-		}
-	}
-	*/
-	
 	func loadFeedbackDatasetFromJSON() {
 		
 		guard let feedbacks = flipsTestData.feedbacks else {
@@ -200,10 +194,10 @@ struct FlipsCoreDataModel: FlipsModel {
 	}
 	
 	/// Makes an relationship between the user that has the provided `uuid` and the flip that has the provided `uuid`
-	func assign(user uid: UUID, flip fid: UUID) {
-		let userRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserById", substitutionVariables: ["id" : uid])
+	func assign(user username: String, flip uuid: UUID) {
+		let userRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserByUsername", substitutionVariables: ["username" : username])
 		
-		let flipRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "FlipById", substitutionVariables: ["id" : fid])
+		let flipRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "FlipById", substitutionVariables: ["id" : uuid])
 		do {
 			let user = try FlipsCoreDataModel.context.fetch(userRequest!).first as! UserEntity
 			let flip = try FlipsCoreDataModel.context.fetch(flipRequest!).first as! FlipEntity
@@ -216,11 +210,45 @@ struct FlipsCoreDataModel: FlipsModel {
 		}
 	}
 	
+	/// Evenly assign Flips to Users
+	/// User to Flip as Author:Flip Inverse
+	func assignUsersToFlips(completion: (Bool) -> ()) {
+		
+		let userRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+		let flipRequest: NSFetchRequest<FlipEntity> = FlipEntity.fetchRequest()
+		
+		do {
+			
+			let users = try FlipsCoreDataModel.context.fetch(userRequest)
+			let flips = try FlipsCoreDataModel.context.fetch(flipRequest)
+			
+			let usersCount: Int = users.count
+			let flipsCount: Int = flips.count
+			
+			for i in 0..<flipsCount {
+				
+				let index: Int = i%usersCount
+				let tempUser: UserEntity = users[index]
+				let tempFlip: FlipEntity = flips[i]
+				
+				// adds this flip to the user's "flips" array
+				tempUser.addToFlips(tempFlip)
+				try FlipsCoreDataModel.context.save()
+				
+			}
+			
+		} catch {
+			print("No-go, friend")
+			return
+		}
+		
+		completion(true)
+	}
+	
+	
 	/// Generate a random Rating and assign it to a random flip and random user
 	/// Helps simulate the social aspect of Flips
-	func generateRatings(count: Int16) {
-		
-		// TODO: Rating's user and flip must be a unique combination.
+	func generateRatings(count: Int16, completion: (Bool) -> ()) {
 		
 		for _ in 1...count {
 			
@@ -250,14 +278,17 @@ struct FlipsCoreDataModel: FlipsModel {
 				let randomUserEntity = randomUsers!.first!
 				let randomFlipEntity = randomFlips!.first!
 				
-				let randomUser = FlipsCoreDataModel.getUser(username: randomUserEntity.username!)!
-				let randomFlip = FlipsCoreDataModel.getFlip(id: randomFlipEntity.id!)!
+				let uniqueRatingRequest = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "RatingByUserAndFlip", substitutionVariables: ["user" : randomUserEntity, "flip" : randomFlipEntity])
+				let existingRatings = try FlipsCoreDataModel.context.fetch(uniqueRatingRequest!)
+				if !existingRatings.isEmpty { print("Rating duplicated in generateRatings. Skipping."); continue }
 				
-				let newRating = Rating(score: Int16.random(in: 0...3), user: randomUser, flip: randomFlip)
+				let newRating = Rating(score: Int16.random(in: 0...3))
 				let newRatingEntity = newRating.convertToManagedObject()
-				
+				newRatingEntity.user = randomUserEntity
+				newRatingEntity.flip = randomFlipEntity
 				// adds this rating to the user's "ratings" array
 				randomUserEntity.addToRatings(newRatingEntity)
+				
 				// adds this rating to the flip's "ratings" array
 				randomFlipEntity.addToRatings(newRatingEntity)
 				
@@ -265,7 +296,8 @@ struct FlipsCoreDataModel: FlipsModel {
 			} catch {
 				print("Assignment of rating to user and flip failed")
 			}
-			
 		}
+		
+		completion(true)
 	}
 }

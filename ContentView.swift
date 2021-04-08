@@ -26,25 +26,22 @@ struct CoreDataView: View {
 	
 	@FetchRequest(
 		entity: UserEntity.entity(),
-		sortDescriptors: [
-			NSSortDescriptor(keyPath: \UserEntity.id, ascending: true),
-	]) var users: FetchedResults<UserEntity>
-
+		sortDescriptors: [],
+		predicate: NSPredicate(format: "username == %@", UserDefaults.standard.string(forKey: "username")!)
+	) var user: FetchedResults<UserEntity>
+	
 	@FetchRequest(
 		entity: FlipEntity.entity(),
 		sortDescriptors: [
-			NSSortDescriptor(keyPath: \FlipEntity.id, ascending: true),
+			NSSortDescriptor(keyPath: \FlipEntity.timestamp, ascending: true),
 	]) var flips: FetchedResults<FlipEntity>
-
+	
 	@FetchRequest(
 		entity: RatingEntity.entity(),
-		sortDescriptors: [
-			NSSortDescriptor(keyPath: \RatingEntity.id, ascending: true),
-	]) var ratings: FetchedResults<RatingEntity>
+		sortDescriptors: []) var ratings: FetchedResults<RatingEntity>
 	
 	@FetchRequest(entity: FeedbackEntity.entity(),
-								sortDescriptors: [NSSortDescriptor(keyPath: \FeedbackEntity.id, ascending: true),
-	]) var feedbacks: FetchedResults<FeedbackEntity>
+								sortDescriptors: []) var feedbacks: FetchedResults<FeedbackEntity>
 	
 	init(selection: Int, model: Binding<FlipsModel>) {
 		
@@ -55,8 +52,8 @@ struct CoreDataView: View {
 	
 	var body: some View {
 			TabView(selection: $selection) {
-				HomeView()
-					.tabItem { Image(systemName: "home") }
+				HomeView(flips: flips.map{ Flip(flipEntity: $0) })
+					.tabItem { Image(systemName: "house") }
 					.tag(1)
 					.preferredColorScheme(.dark)
 				FlipsView(flips: flips.map{ Flip(flipEntity: $0) })
@@ -64,15 +61,15 @@ struct CoreDataView: View {
 					.tag(2)
 					.preferredColorScheme(.dark)
 				CreateFlipView()
-					.tabItem { Image(systemName: "plus.circle.fill").renderingMode(.original) }
+					.tabItem { Image(systemName: "plus.circle.fill") }
 					.tag(3)
+					.preferredColorScheme(.dark)
+				ProfileView(user: user.first!)
+					.tabItem { Image(systemName: "person.crop.circle") }
+					.tag(4)
 					.preferredColorScheme(.dark)
 				ContactUsView()
 					.tabItem { Image(systemName: "questionmark.circle") }
-					.tag(4)
-					.preferredColorScheme(.dark)
-				ProfileView()
-					.tabItem { Image(systemName: "person.crop.square.fill") }
 					.tag(5)
 					.preferredColorScheme(.dark)
 			}

@@ -8,13 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+	
+	var flips: [Flip]
+	
+	var body: some View {
+		
+		NavigationView {
+			
+			List(Trick.allCases, id: \.self) { trick in
+				NavigationLink(destination: FlipsView(flips: flips, filter: trick.rawValue), label: {
+					Text("\(trick.rawValue)s")
+				})
+			}.navigationBarTitle("Flips by Trick")
+		}
+		/*
+		VStack(alignment: .leading) {
+			ForEach(Trick.allCases, id: \.self) {
+				
+				HStack {
+					Text("\($0.rawValue)")
+						.font(.title2)
+						.padding(.trailing)
+					Spacer()
+				}
+			}
+		}
+		*/
+	}
 }
 
 struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
+	static var previews: some View {
+		HomeView(flips: FlipsDataModel.designModel.flips)
+	}
 }

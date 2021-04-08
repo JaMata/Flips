@@ -9,12 +9,22 @@ import Foundation
 
 struct Feedback: Codable {
 	
-	let id: UUID = UUID()
-	let timestamp: Date = Date()
+	let id: UUID
+	let timestamp: Date
 	let body: String
+	
+	init(id: UUID? = UUID(), timestamp: Date? = Date(), body: String) {
+		
+		self.id = id!
+		self.timestamp = timestamp!
+		self.body = body
+		
+	}
 	
 	init(feedbackEntity: FeedbackEntity) {
 		
+		self.id = feedbackEntity.id!
+		self.timestamp = feedbackEntity.timestamp!
 		self.body = feedbackEntity.body!
 		
 	}

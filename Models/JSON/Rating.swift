@@ -12,16 +12,12 @@ struct Rating: Codable {
 	let id: UUID
 	let timestamp: Date
 	let score: Int16
-	let user: User
-	let flip: Flip
 	
-	init(score: Int16, user: User, flip: Flip) {
+	init(score: Int16) {
 		
 		self.id = UUID()
 		self.timestamp = Date()
 		self.score = score
-		self.user = user
-		self.flip = flip
 		
 	}
 	
@@ -30,8 +26,6 @@ struct Rating: Codable {
 		self.id = ratingEntity.id!
 		self.timestamp = ratingEntity.timestamp!
 		self.score = ratingEntity.score
-		self.flip = Flip(flipEntity: ratingEntity.flip!)
-		self.user = User(userEntity: ratingEntity.user!)
 		
 	}
 	
@@ -42,8 +36,6 @@ struct Rating: Codable {
 		ratingEntity.id = self.id
 		ratingEntity.timestamp = self.timestamp
 		ratingEntity.score = self.score
-		ratingEntity.flip = FlipsCoreDataModel.getFlipWith(uuid: self.flip.id)
-		ratingEntity.user = FlipsCoreDataModel.getUserWith(username: self.user.username)
 		
 		return ratingEntity
 		
