@@ -60,7 +60,7 @@ struct CoreDataView: View {
 					.tabItem { Image(systemName: "bandage") }
 					.tag(2)
 					.preferredColorScheme(.dark)
-				CreateFlipView()
+				CreateFlipView(user: user.first!)
 					.tabItem { Image(systemName: "plus.circle.fill") }
 					.tag(3)
 					.preferredColorScheme(.dark)

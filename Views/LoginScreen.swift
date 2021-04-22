@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct LoginScreen: View {
 	
@@ -14,6 +15,7 @@ struct LoginScreen: View {
 	@EnvironmentObject var userAuth: UserAuth
 	@State private var networkDataLoaded: Bool = false
 	@State private var isSignupShowing: Bool = false
+	@State private var alertIsPresented: Bool = false
 	
 	var body: some View {
 		
@@ -51,12 +53,23 @@ struct LoginScreen: View {
 					HStack {
 						Spacer(minLength: 50)
 						Button(action: {
-							print("USERNAME: \(self.username)")
-							self.saveUserName(userName: self.username)
-							self.userAuth.login()
+							
+							if queryFor(username: self.username) {
+								self.saveUserName(userName: self.username)
+								self.userAuth.login()
+							} else {
+								clearCredentials()
+								self.alertIsPresented.toggle()
+							}
 						}, label: { Text("login") })
 							.frame(maxWidth: .infinity)
-						.border(Color.accentColor)
+							.border(Color.accentColor)
+							.alert(isPresented: $alertIsPresented) {
+								Alert(
+									title: Text("Account Does Not Exist"),
+									message: Text("Try typing in your credentials again.")
+								)
+							}
 						Spacer(minLength: 50)
 					}
 				}
@@ -90,10 +103,40 @@ struct LoginScreen: View {
 			}
 		}
 	}
-
-	func saveUserName(userName: String) {
-		UserDefaults.standard.set(userName.lowercased(), forKey: "username")
+	
+	func queryFor(username: String) -> Bool {
 		
+		let request = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserByUsername", substitutionVariables: ["username" : username])
+		
+		// DELETE
+		let testRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+		
+		do {
+			let results = try FlipsCoreDataModel.context.fetch(request!)
+			let testResults = try FlipsCoreDataModel.context.fetch(testRequest)
+			
+			print("There are \(testResults.count) users!")
+			
+			if results.count < 1 {
+				print("User doesn't exist!")
+				return false
+			}
+			
+		} catch {
+			print("Error while querying for username")
+			return false
+		}
+		
+		return true
+	}
+	
+	func saveUserName(userName: String) {
+		UserDefaults.standard.set(userName, forKey: "username")
+	}
+	
+	func clearCredentials() {
+		username = ""
+		password = ""
 	}
 
 }

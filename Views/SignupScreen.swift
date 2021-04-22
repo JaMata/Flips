@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SignupScreen: View {
 	
+	@Environment(\.managedObjectContext) var context
 	@State private var username: String = ""
 	@State private var password: String = ""
 	@State private var passwordCopy: String = ""
 	@State private var name: String = ""
 	@State private var email: String = ""
-	@State private var country: String = ""
 	@Binding var isSignupShowing: Bool
 	
 	var body: some View {
@@ -35,6 +35,8 @@ struct SignupScreen: View {
 				HStack {
 					Spacer(minLength: 50)
 					TextField("Username", text: $username)
+						.autocapitalization(.none)
+						.disableAutocorrection(true)
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.border(Color.accentColor)
 					Spacer(minLength: 50)
@@ -56,6 +58,7 @@ struct SignupScreen: View {
 				HStack {
 					Spacer(minLength: 50)
 					TextField("Name", text: $name)
+						.disableAutocorrection(true)
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.border(Color.accentColor)
 					Spacer(minLength: 50)
@@ -63,13 +66,8 @@ struct SignupScreen: View {
 				HStack {
 					Spacer(minLength: 50)
 					TextField("Email", text: $email)
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.border(Color.accentColor)
-					Spacer(minLength: 50)
-				}
-				HStack {
-					Spacer(minLength: 50)
-					TextField("Country", text: $country)
+						.autocapitalization(.none)
+						.disableAutocorrection(true)
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.border(Color.accentColor)
 					Spacer(minLength: 50)
@@ -78,12 +76,16 @@ struct SignupScreen: View {
 					Spacer(minLength: 50)
 					Button(action: {
 						// Create User
+						if password == passwordCopy && createAccount() {
+							self.isSignupShowing.toggle()
+						} else {
+							print("Error creating account!")
+						}
 						
-						self.isSignupShowing.toggle()
+						
 					}, label: { Text("sign up") })
 					.frame(maxWidth: .infinity)
 					.border(Color.accentColor)
-					.disabled(true) // TODO:
 					Spacer(minLength: 50)
 				}
 			}
@@ -97,6 +99,27 @@ struct SignupScreen: View {
 				.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
 		)
 	}
+	
+	func createAccount() -> Bool {
+		do {
+			let user: User = User(username: username, name: name, email: email)
+			let userEntity: UserEntity = user.convertToManagedObject()
+			try context.save()
+		} catch {
+			return false
+		}
+		
+		return true
+	}
+	
+	func clearAccountInputs() {
+		username = ""
+		password = ""
+		passwordCopy = ""
+		name = ""
+		email = ""
+	}
+	
 }
 
 struct SignupScreen_Previews: PreviewProvider {

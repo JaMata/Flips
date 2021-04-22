@@ -16,14 +16,6 @@ struct Flip: Codable {
 	let imageDescription: String?
 	let latitude: Double?
 	let longitude: Double?
-	
-	/*
-	var score: Double {
-		guard ratings!.count > 0 else {return 0 }
-		return Double(ratings!.reduce(0) { $0
-			+ Int($1.score) }/ratings!.count)
-		}
-	*/
 		
 	init(id: String, timestamp: String, image: String, trick: String, imageDescription: String? = "", latitude: Double? = 0, longitude: Double? = 0) {
 		

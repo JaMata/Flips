@@ -15,7 +15,7 @@ struct ProfileView: View {
 	
 	var body: some View {
 		
-		let myFlips = user.flips as! Set<FlipEntity>
+		let myFlips = Array(user.flips as! Set<FlipEntity>)
 		
 		VStack {
 			AsyncImage(
@@ -51,18 +51,21 @@ struct ProfileView: View {
 			Spacer()
 			Text("Flips")
 				.font(.title)
-			HStack {
-				Spacer()
-				AsyncImage(
-					url: myFlips.first!.image!,
-					placeholder: { Text("...") },
-					image: { Image(uiImage: $0).resizable() }
-				)
-				.aspectRatio(contentMode: .fit)
-				.frame(width: 100, height: 100)
-				.clipShape(Rectangle())
-				Text("...and \(myFlips.count - 1) more!")
-				Spacer()
+			
+			ScrollView(.horizontal) {
+				HStack {
+					ForEach(myFlips, id: \.self) { flip in
+						
+						AsyncImage(
+							url: flip.image!,
+							placeholder: { Text("...") },
+							image: { Image(uiImage: $0).resizable() }
+						)
+						.aspectRatio(contentMode: .fit)
+						.frame(width: 100, height: 100)
+						.clipShape(Rectangle())
+					}
+				}
 			}
 			Spacer()
 		}
