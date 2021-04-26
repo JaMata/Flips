@@ -125,6 +125,8 @@
 		 "flips" : [],
 		 "ratings" : []
 	 },
+		"latitude" : 39.2967385,
+		"longitude" : -76.5927362,
 		"ratings" : []
 	},
 	{
@@ -297,6 +299,8 @@
 		 "flips" : [],
 		 "ratings" : []
 	 },
+		"latitude" : 39.2967385,
+		"longitude" : -76.5927362,
 		"ratings" : []
 	},
 	{
@@ -339,6 +343,8 @@
 		 "flips" : [],
 		 "ratings" : []
 	 },
+		"latitude" : 39.2967385,
+		"longitude" : -76.5927362,
 		"ratings" : []
 	},
 	{
@@ -425,6 +431,9 @@
 		 "flips" : [],
 		 "ratings" : []
 	 },
+		"latitude" : 26.8127292,
+		"longitude" : -80.6118768,
 		"ratings" : []
 	}
 ]
+

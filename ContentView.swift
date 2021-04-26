@@ -52,11 +52,11 @@ struct CoreDataView: View {
 	
 	var body: some View {
 			TabView(selection: $selection) {
-				HomeView(flips: flips.map{ Flip(flipEntity: $0) })
+				HomeView(flips: flips.map{ $0 })
 					.tabItem { Image(systemName: "house") }
 					.tag(1)
 					.preferredColorScheme(.dark)
-				FlipsView(flips: flips.map{ Flip(flipEntity: $0) })
+				FlipsView(flips: flips.map{ $0 })
 					.tabItem { Image(systemName: "bandage") }
 					.tag(2)
 					.preferredColorScheme(.dark)

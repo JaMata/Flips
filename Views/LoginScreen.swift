@@ -56,6 +56,7 @@ struct LoginScreen: View {
 							
 							if queryFor(username: self.username) {
 								self.saveUserName(userName: self.username)
+								sleep(1)
 								self.userAuth.login()
 							} else {
 								clearCredentials()
@@ -108,14 +109,8 @@ struct LoginScreen: View {
 		
 		let request = FlipsCoreDataModel.context.persistentStoreCoordinator?.managedObjectModel.fetchRequestFromTemplate(withName: "UserByUsername", substitutionVariables: ["username" : username])
 		
-		// DELETE
-		let testRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
-		
 		do {
 			let results = try FlipsCoreDataModel.context.fetch(request!)
-			let testResults = try FlipsCoreDataModel.context.fetch(testRequest)
-			
-			print("There are \(testResults.count) users!")
 			
 			if results.count < 1 {
 				print("User doesn't exist!")

@@ -9,42 +9,44 @@ import SwiftUI
 
 struct FlipsView: View {
 	
-	var flips: [Flip]
+	var flips: [FlipEntity]
 	var filter: String?
 	
-	init(flips: [Flip], filter: String? = "*") {
+	init(flips: [FlipEntity], filter: String? = "flip") {
 		
 		self.filter = filter
-		self.flips = flips.filter{ filter == "*" || $0.trick.rawValue == filter }
+		self.flips = flips.filter{ filter == "flip" || $0.trick! == filter }
 		
 	}
 	
 	var body: some View {
 		
-		ScrollView {
-			VStack(alignment: .leading) {
-				
-				Text("\(flips.count) flip(s)!")
-					.font(.title)
-				ForEach(flips, id: \.id) { flip in
+		NavigationView {
+			ScrollView {
+				VStack(alignment: .leading) {
 					
-					AsyncImage(
-						url: flip.image,
-						placeholder: { Text("...") },
-						image: { Image(uiImage: $0).resizable() }
-					)
-					.aspectRatio(contentMode: .fill)
-					.frame(width: 300, height: 300)
-					.clipped()
-					
-				}
-			}.frame(maxWidth: .infinity)
+					Text("\(flips.count) \(filter!)(s)!")
+						.font(.title)
+					ForEach(flips, id: \.id) { flip in
+						NavigationLink(destination: FlipView(flip: flip)) {
+							AsyncImage(
+								url: flip.image!,
+								placeholder: { Text("...") },
+								image: { Image(uiImage: $0).resizable() }
+							)
+							.aspectRatio(contentMode: .fill)
+							.frame(width: 300, height: 300)
+							.clipped()
+						}
+					}
+				}.frame(maxWidth: .infinity)
+			}
 		}
 	}
 }
 
 struct FlipsView_Previews: PreviewProvider {
 	static var previews: some View {
-		FlipsView(flips: FlipsDataModel.designModel.flips)
+		FlipsView(flips: FlipsDataModel.designModel.flips.map{ $0.convertToManagedObject() })
 	}
 }

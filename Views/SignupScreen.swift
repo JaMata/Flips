@@ -16,6 +16,7 @@ struct SignupScreen: View {
 	@State private var name: String = ""
 	@State private var email: String = ""
 	@Binding var isSignupShowing: Bool
+	@State private var alertIsPresented: Bool = false
 	
 	var body: some View {
 		VStack {
@@ -80,12 +81,19 @@ struct SignupScreen: View {
 							self.isSignupShowing.toggle()
 						} else {
 							print("Error creating account!")
+							self.alertIsPresented.toggle()
 						}
 						
 						
 					}, label: { Text("sign up") })
 					.frame(maxWidth: .infinity)
 					.border(Color.accentColor)
+					.alert(isPresented: $alertIsPresented) {
+						Alert(
+							title: Text("Account Creation Was Unsuccessful"),
+							message: Text("Try typing in your account information again.")
+						)
+					}
 					Spacer(minLength: 50)
 				}
 			}

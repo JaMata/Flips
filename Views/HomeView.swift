@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 	
-	var flips: [Flip]
+	var flips: [FlipEntity]
 	
 	var body: some View {
 		
@@ -39,6 +39,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
 	static var previews: some View {
-		HomeView(flips: FlipsDataModel.designModel.flips)
+		HomeView(flips: FlipsDataModel.designModel.flips.map{ $0.convertToManagedObject() })
 	}
 }
